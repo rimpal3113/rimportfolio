@@ -47,10 +47,9 @@ function Header() {
   // Navigation items data
   const navItems = [
     { id: 1, name: "Home", href: "#home" },
+     { id: 1, name: "About", href: "#About" },
     { id: 2, name: "Skills", href: "#skills" },
-    { id: 3, name: "Experience", href: "#experience" },
     { id: 4, name: "Projects", href: "#projects" },
-    { id: 5, name: "Education", href: "#education" },
     { id: 6, name: "Contact", href: "#contact" },
   ];
 

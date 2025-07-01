@@ -4,6 +4,11 @@ import { useState } from "react";
 import { Mail, Phone, MapPin, Linkedin, Github } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { motion } from "framer-motion";
+import emailjs from "emailjs-com"; // <-- Add this import
+
+const SERVICE_ID = "service_xowti7j"; // Replace with your EmailJS service ID
+const TEMPLATE_ID = "template_usm5f9d"; // Replace with your EmailJS template ID
+const PUBLIC_KEY = "JD1XzWoME1pcvUgGt"; // Replace with your EmailJS public key
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -44,18 +49,33 @@ const Contact = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
       setIsSubmitting(true);
-      setTimeout(() => {
+
+      // EmailJS send
+      try {
+        await emailjs.send(
+          SERVICE_ID,
+          TEMPLATE_ID,
+          {
+            from_name: formData.name,
+            from_email: formData.email,
+            message: formData.message,
+          },
+          PUBLIC_KEY
+        );
         setIsSubmitting(false);
         setSubmitSuccess(true);
         setFormData({ name: "", email: "", message: "" });
         setTimeout(() => {
           setSubmitSuccess(false);
         }, 5000);
-      }, 1500);
+      } catch (error) {
+        setIsSubmitting(false);
+        setErrors({ submit: "Failed to send message. Please try again later." });
+      }
     }
   };
 
@@ -72,12 +92,7 @@ const Contact = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          {/* <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Get In Touch
-          </h2> */}
-          {/* Title with background + foreground */}
           <div className="relative mb-16 text-center">
-            {/* Background title */}
             <h2
               className={`absolute left-1/2 transform -translate-x-1/2 text-4xl w-full -top-6 md:text-6xl md:-top-10 font-bold z-0 bg-gradient-to-b text-transparent bg-clip-text opacity-10 
       dark:from-blue-300 dark:to-blue-900 
@@ -85,8 +100,6 @@ const Contact = () => {
             >
               Get In Touch
             </h2>
-
-            {/* Foreground title with motion */}
             <motion.h2
               initial={{ y: -20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -118,8 +131,13 @@ const Contact = () => {
                 Thank you for your message! I'll get back to you soon.
               </div>
             )}
+            {errors.submit && (
+              <div className="bg-red-900/30 dark:bg-red-900/30 text-red-300 dark:text-red-300 p-4 rounded-lg mb-6">
+                {errors.submit}
+              </div>
+            )}
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} noValidate>
               {/* Name */}
               <div className="mb-6">
                 <label
@@ -140,6 +158,7 @@ const Contact = () => {
                       : "border-gray-300 focus:ring-blue-900 dark:focus:ring-blue-900"
                   }`}
                   placeholder="Your name"
+                  required
                 />
                 {errors.name && (
                   <p className="mt-1 text-red-500 text-sm">{errors.name}</p>
@@ -166,6 +185,7 @@ const Contact = () => {
                       : "border-gray-300 focus:ring-blue-900 dark:focus:ring-blue-900"
                   }`}
                   placeholder="your.email@example.com"
+                  required
                 />
                 {errors.email && (
                   <p className="mt-1 text-red-500 text-sm">{errors.email}</p>
@@ -192,6 +212,7 @@ const Contact = () => {
                       : "border-gray-300 focus:ring-blue-900 dark:focus:ring-blue-900"
                   }`}
                   placeholder="Your message..."
+                  required
                 ></textarea>
                 {errors.message && (
                   <p className="mt-1 text-red-500 text-sm">{errors.message}</p>

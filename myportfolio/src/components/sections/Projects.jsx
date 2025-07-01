@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { Github, ExternalLink } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
@@ -12,67 +11,49 @@ const projects = [
     id: 1,
     title: "Infotech Digital Presence",
     description:
-  "A dynamic and fully responsive digital presence platform for an IT company, built with React and Redux to manage state efficiently, featuring seamless navigation with React Router and a modern UI powered by Tailwind CSS.",
-
+      "A dynamic and fully responsive digital presence platform for an IT company, built with React and Redux to manage state efficiently, featuring seamless navigation with React Router and a modern UI powered by Tailwind CSS.",
     technologies: ["React.js", "Tailwind css", "React Router DOM", "Redux"],
     image: "/ji.png",
-    demoLink: "https://example.com/demo1",
-    githubLink: "https://github.com/yourusername/project1",
   },
   {
     id: 2,
     title: "Online Cake Shop",
     description:
-  "An online cake ordering platform with a visually appealing UI, real-time product listings, user authentication, and order management — built with the MERN stack for a seamless customer experience.",
-
+      "An online cake ordering platform with a visually appealing UI, real-time product listings, user authentication, and order management — built with the MERN stack for a seamless customer experience.",
     technologies: ["React.js", "Tailwind css", "Node.js", "Express", "MongoDB"],
     image: "/gr.png",
-    demoLink: "https://example.com/demo2",
-    githubLink: "https://github.com/yourusername/project2",
   },
   {
     id: 3,
     title: "Messenger App",
     description:
-  "A real-time chat application built with React Native and Firebase, featuring user authentication, instant messaging, and cloud-based data storage for a smooth cross-platform mobile experience.",
-
+      "A real-time chat application built with React Native and Firebase, featuring user authentication, instant messaging, and cloud-based data storage for a smooth cross-platform mobile experience.",
     technologies: ["React-Native", "Firebase"],
     image: "/messenger.jpeg",
-    demoLink: "https://example.com/demo3",
-    githubLink: "https://github.com/yourusername/project3",
   },
   {
     id: 4,
     title: "Golden Glow Beauty Bar Website",
     description:
-  "A professionally designed website for a beauty salon, featuring service listings, appointment booking, and dynamic content management. Built with ASP.NET and SQL Server for robust backend support, and styled with HTML, CSS, and JavaScript for a sleek user experience.",
-
+      "A professionally designed website for a beauty salon, featuring service listings, appointment booking, and dynamic content management. Built with ASP.NET and SQL Server for robust backend support, and styled with HTML, CSS, and JavaScript for a sleek user experience.",
     technologies: ["HTML", "CSS", "JavaScript", "C#", "ASP.NET", "SQL Server"],
     image: "/ggbb.png",
-    demoLink: "https://example.com/demo3",
-    githubLink: "https://github.com/yourusername/project3",
   },
   {
     id: 5,
     title: "Simple Math Calculation app",
     description:
-  "An Android application developed using Java and XML for performing basic arithmetic operations like addition, subtraction, multiplication, and division with a clean and user-friendly interface.",
-
+      "An Android application developed using Java and XML for performing basic arithmetic operations like addition, subtraction, multiplication, and division with a clean and user-friendly interface.",
     technologies: ["XML", "Java"],
     image: "/smaths.jpeg",
-    demoLink: "https://example.com/demo3",
-    githubLink: "https://github.com/yourusername/project3",
   },
   {
     id: 6,
     title: "Course Registration app",
     description:
-  "An Android-based course registration system that allows users to browse, register, and manage courses efficiently. Built using Java and XML for a responsive mobile UI, with SQLite integration for offline data storage and retrieval.",
-
+      "An Android-based course registration system that allows users to browse, register, and manage courses efficiently. Built using Java and XML for a responsive mobile UI, with SQLite integration for offline data storage and retrieval.",
     technologies: ["XML", "Java", "SQLite"],
     image: "/cregister.jpeg",
-    demoLink: "https://example.com/demo3",
-    githubLink: "https://github.com/yourusername/project3",
   },
 ];
 
@@ -108,10 +89,6 @@ const Projects = () => {
     >
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          {/* <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5">
-            My Projects
-          </h2> */}
-          {/* Title with background + foreground */}
           <div className="relative mb-16 text-center">
             {/* Background title */}
             <h2
@@ -121,7 +98,6 @@ const Projects = () => {
             >
               My Projects
             </h2>
-
             {/* Foreground title with motion */}
             <motion.h2
               initial={{ y: -20, opacity: 0 }}
@@ -171,26 +147,7 @@ const Projects = () => {
                     </span>
                   ))}
                 </div>
-                <div className="flex justify-between">
-                  <a
-                    href={project.demoLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center text-blue-400 dark:text-blue-400 hover:text-blue-300 dark:hover:text-blue-300 font-medium"
-                  >
-                    <ExternalLink className="h-4 w-4 mr-1" />
-                    Live Demo
-                  </a>
-                  <a
-                    href={project.githubLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center text-gray-300 dark:text-gray-300 hover:text-white dark:hover:text-white font-medium"
-                  >
-                    <Github className="h-4 w-4 mr-1" />
-                    GitHub
-                  </a>
-                </div>
+                {/* Live Demo and GitHub links removed */}
               </div>
             </div>
           ))}
@@ -199,5 +156,4 @@ const Projects = () => {
     </section>
   );
 };
-
 export default Projects;

@@ -62,6 +62,7 @@ const Skills = () => {
       icon: <Terminal className="h-6 w-6 text-[#A74482] dark:text-[#A74482]" />,
       skills: [
         { name: "Git", proficiency: 60 },
+         { name: "GitHub", proficiency: 60 },
         
       ],
     },

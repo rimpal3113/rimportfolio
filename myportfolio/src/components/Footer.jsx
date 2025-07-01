@@ -1,64 +1,9 @@
-// function Footer() {
-//   return (
-//     <footer className="bg-[#A74482] text-white py-8">
-//       <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
-//         <div className="mb-4 md:mb-0 text-center md:text-left">
-//           <h3 className="text-xl font-bold">MyPortfolio</h3>
-//           <p className="text-sm text-purple-100">
-//             © {new Date().getFullYear()} All rights reserved.
-//           </p>
-//         </div>
-
-//         <div className="flex space-x-6 mb-4 md:mb-0">
-//           <a href="#home" className="hover:text-black transition">
-//             Home
-//           </a>
-//           <a href="#skills" className="hover:text-black transition">
-//             Skills
-//           </a>
-//           <a href="#projects" className="hover:text-black transition">
-//             Projects
-//           </a>
-//           <a href="#contact" className="hover:text-black transition">
-//             Contact
-//           </a>
-//         </div>
-
-//         <div className="flex space-x-4">
-//           <a
-//             href="https://github.com"
-//             target="_blank"
-//             rel="noopener noreferrer"
-//             className="hover:text-yellow-300"
-//           >
-//             <i className="fab fa-github"></i>
-//           </a>
-//           <a
-//             href="https://linkedin.com"
-//             target="_blank"
-//             rel="noopener noreferrer"
-//             className="hover:text-yellow-300"
-//           >
-//             <i className="fab fa-linkedin"></i>
-//           </a>
-//           <a href="mailto:you@example.com" className="hover:text-yellow-300">
-//             <i className="fas fa-envelope"></i>
-//           </a>
-//         </div>
-//       </div>
-//     </footer>
-//   );
-// }
-
-// export default Footer;
 import {
   FaGithub,
   FaLinkedin,
   FaEnvelope,
   FaFileDownload,
   FaWhatsapp,
-  FaPhone,
-  FaPhoneSlash,
   FaPhoneAlt,
   FaArrowUp,
 } from "react-icons/fa";
@@ -90,7 +35,6 @@ const FloatingBackgroundElements = () => {
   );
 };
 
-// Separate component for floating action buttons
 const FloatingButtons = ({ showScroll }) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -146,73 +90,29 @@ const FloatingButtons = ({ showScroll }) => {
         </motion.button>
       )}
 
-      {/* WhatsApp Button */}
-      {/* <motion.a
-        href="https://wa.me/yourphonenumber"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-colors duration-200 flex items-center justify-center relative overflow-hidden"
-        whileHover={{ y: -5, scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        aria-label="Chat on WhatsApp"
-      >
-        <motion.div
-          animate={{
-            rotate: [0, 10, -10, 0],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            repeatType: "reverse",
-          }}
-        >
-          <FaWhatsapp className="text-lg md:text-xl" />
-        </motion.div>
-        <motion.span
-          className="absolute -bottom-6 text-xs font-medium whitespace-nowrap"
-          initial={{ opacity: 0 }}
-          whileHover={{ opacity: 1, y: -8 }}
-        >
-          Message Me
-        </motion.span>
-      </motion.a> */}
-
       {/* Phone Button */}
-      <motion.a
-        href="tel:+1234567890"
-        className="bg-blue-500 text-white p-4 rounded-full shadow-lg hover:bg-blue-600 transition-colors duration-200 flex items-center justify-center relative overflow-hidden"
-        whileHover={{ y: -5, scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        aria-label="Call me"
-      >
-        <motion.div
-          whileHover={{ rotate: 180 }}
-          transition={{ type: "spring", stiffness: 300 }}
-        >
-          <FaPhoneAlt className="text-lg md:text-xl" />
-        </motion.div>
-        <motion.span
-          className="absolute -bottom-6 text-xs font-medium whitespace-nowrap"
-          initial={{ opacity: 0 }}
-          whileHover={{ opacity: 1, y: -8 }}
-        >
-          Call Me
-        </motion.span>
-      </motion.a>
+      
     </div>
   );
 };
+
 function Footer() {
   const [showScroll, setShowScroll] = useState(false);
-  // const [isHovered, setIsHovered] = useState(false);
   const socialLinks = [
     { icon: <FaGithub className="text-xl" />, url: "https://github.com" },
     { icon: <FaLinkedin className="text-xl" />, url: "https://linkedin.com" },
     { icon: <FaEnvelope className="text-xl" />, url: "mailto:you@example.com" },
   ];
 
-  const navLinks = ["Home", "Skills","Experience" ,"Projects", "Education","Contact"];
+  // Map nav link names to section IDs
+  const navLinks = [
+    { name: "Home", id: "home" },
+    { name: "About", id: "about-section" }, // Make sure this matches your About section's id
+    { name: "Skills", id: "skills" },
+    { name: "Projects", id: "projects" },
+    { name: "Contact", id: "contact" },
+  ];
+
   useEffect(() => {
     const checkScroll = () => {
       if (!showScroll && window.pageYOffset > 400) {
@@ -225,21 +125,18 @@ function Footer() {
     return () => window.removeEventListener("scroll", checkScroll);
   }, [showScroll]);
 
-  // Scroll to top function
-  // const scrollToTop = () => {
-  //   window.scrollTo({
-  //     top: 0,
-  //     behavior: "smooth",
-  //   });
-  // };
+  // Smooth scroll handler for nav links
+  const handleNavClick = (id) => (e) => {
+    e.preventDefault();
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <>
-      {/* Floating WhatsApp and Phone buttons */}
-      {/* Floating WhatsApp and Phone buttons with enhanced animations */}
       <FloatingButtons showScroll={showScroll} />
-      {/* Footer content */}
-
       <footer className="bg-gradient-to-r from-[#8A2BE2] to-[#A74482] text-white py-12 relative overflow-hidden">
         <FloatingBackgroundElements />
 
@@ -270,21 +167,17 @@ function Footer() {
               <ul className="space-y-3">
                 {navLinks.map((item) => (
                   <motion.li
-                    onClick={() => {
-                      document
-                        .getElementById("projects")
-                        ?.scrollIntoView({ behavior: "smooth" });
-                    }}
-                    key={item}
+                    key={item.name}
                     whileHover={{ x: 5 }}
                     whileTap={{ x: 0 }}
                   >
                     <a
-                      href={`#${item.toLowerCase()}`}
+                      href={`#${item.id}`}
+                      onClick={handleNavClick(item.id)}
                       className="flex items-center text-purple-100 hover:text-white transition-colors duration-200"
                     >
                       <span className="w-2 h-2 bg-purple-300 rounded-full mr-2"></span>
-                      {item}
+                      {item.name}
                     </a>
                   </motion.li>
                 ))}
