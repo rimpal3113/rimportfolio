@@ -24,7 +24,7 @@ const educationData = [
 
 const experienceData = [
   {
-    role: "Web Development Inten",
+    role: "Web Development Intern",
     company: "NativeSoftTech",
     year: "May 2025 – June 2025",
     description: `Designed and developed a fully responsive, animated personal portfolio website using React.
