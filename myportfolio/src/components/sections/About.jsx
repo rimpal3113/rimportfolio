@@ -24,7 +24,7 @@ const educationData = [
 
 const experienceData = [
   {
-    role: "Web Development Internship",
+    role: "Web Development Inten",
     company: "NativeSoftTech",
     year: "May 2025 – June 2025",
     description: `Designed and developed a fully responsive, animated personal portfolio website using React.
@@ -34,7 +34,7 @@ Integrated GSAP and Framer Motion for engaging scroll-based and UI animations.
 Gained hands-on experience in modern frontend practices including component-based architecture, responsive design, and animation libraries.`,
   },
   {
-    role: "Web Development Intern",
+    role: "Web Development Internship",
     company: "Jinarth Infotech",
     year: "Jan 2025 – April 2025",
     description: `Crafted 15+ responsive user interfaces using React.js and Tailwind CSS, boosting user engagement by 25% through intuitive and mobile-optimized designs.
