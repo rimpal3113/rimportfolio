@@ -26,7 +26,7 @@ const experienceData = [
   {
     role: "Web Development Intern",
     company: "NativeSoftTech",
-    year: "May 2025 – June 2025",
+    year: "May 2025 – July 2025",
     description: `Designed and developed a fully responsive, animated personal portfolio website using React.
 
 Integrated GSAP and Framer Motion for engaging scroll-based and UI animations.
